@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- mengatur layout, salah satunya agar bisa dilakukan action untuk menghapus dan mengupdate data (beserta alert nya) -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thmelef/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Web App</title>
+</head>
+<body>
+  <div layout:fragment="content">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <th styles="width:10%"> ID </th>
+        <th styles="width:20%"> First Name </th>
+        <th styles="width:20%"> Last Name </th>
+        <th styles="width:10%"> Birth Date </th>
+        <th styles="width:10%"> Created On </th>
+        <th styles="width:10%"> Updated On </th>
+        <th styles="width:20%"> Actions </th>
+      </thead>
+        <tbody>
+            <tr th:each="stdDo : ${studentDtos}">
+                <td th:text="${stdDo.id}">id</td>
+                <td th:text="${stdDo.firstName}">first-name</td>
+                <td th:text="${stdDo.lastName}">last-name</td>
+                <td th:text="${stdDo.birthDate}">birth-date</td>
+                <td th:text="${stdDo.createdOn}">created on</td>
+                <td th:text="${stdDo.updatedOn}">updated on</td>
+                <td>
+                    <!-- alert jika akan mengupdate atau menghapus data-->
+                    <a onclick="alert(`Anda akan mengupdate data`)" th:href="@{/admin/students/update/{id}(id=${stdDo.id})}" type="submit" class="btn btn-primary">Update</a>
+                    <a onclick="alert(`Anda akan menghapus data`)" th:href="@{/admin/students/delete/{id}(id=${stdDo.id})}" type="submit" class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
