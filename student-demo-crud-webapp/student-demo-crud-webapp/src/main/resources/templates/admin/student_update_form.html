@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- untuk mengupdate data student (firstName,lastName,dan birthDate) yang akan diinput secara manual oleh user -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thmelef/layout"
+      layout:decorate="_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Student Form</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="container">
+    <div class="row col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Update Student Data</h2>
+        </div>
+        <div class="card-body">
+          <form role="form" method="post" th:action="@{/admin/students/update}" th:object="${studentDto}">
+            <div class="mb-3">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-control"
+                     placeholder="Enter First Name" th:field="*{firstName}">
+              <p th:if="${#fields.hasErrors('firstName')}" class="text-danger"
+                 th:errors="*{firstName}"></p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control"
+                     placeholder="Enter Last Name" th:field="*{lastName}">
+              <p th:if="${#fields.hasErrors('lastName')}" class="text-danger"
+                 th:errors="*{lastName}"></p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Birth Date</label>
+              <input type="date" class="form-control"
+                     placeholder="Enter Birth Date" th:field="*{birthDate}">
+              <p th:if="${#fields.hasErrors('birthDate')}" class="text-danger"
+                 th:errors="*{birthDate}"></p>
+            </div>
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{createdOn}">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

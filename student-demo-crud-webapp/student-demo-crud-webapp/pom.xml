@@ -49,6 +49,10 @@
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6122cc59feedffd604221a3bcba387e3db19c8c
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
